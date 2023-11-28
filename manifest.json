@@ -2,18 +2,18 @@
 	"name": "グーグル画像DL",
 	"manifest_version": 3,
 	"version": "1.0",
-	"permissions": [
-        "tabs"
-    ],
+	"permissions": ["activeTab", "scripting"],
 	"action": {
 		"default_popup": "popup.html"
 	},
     "content_scripts": [
         {
+            "run_at": "document_end",
             "matches": [
                 "https://www.google.com/search?*sclient=img*",
                 "https://www.google.com/search?*tbm=isch*"
             ],
+            "all_frames": true,
             "js": ["/js/content.js"]
         }
     ]
