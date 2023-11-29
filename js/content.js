@@ -14,21 +14,24 @@ async function collectImages() {
 
   //each使え every image next component (idiv)
   let idiv = image_divs.first();//debug
-  let img_name = getImageName(idiv);
   let img_url = await clickImage(idiv);
+  let img_name = getImageName(idiv, img_url);
   
   let dl_opt = {
-    filename: `test/${img_name}`,
-    url: img_url
+    filename: `test/${img_name}.jpg`, //大体jpgやろという暫定的な処置
+    url: img_url,
+    conflictAction: "uniquify"
   };
   startDL(dl_opt);
-  //chrome.downloads.download(dl_opt).then(id=>{});
-  //downloads apiはbackgroudでしか使えないらしい！
 
 }
 
-function getImageName(idiv) {
-  return idiv.children("h3").text();
+function getImageName(idiv, img_url) {
+  //拡張子を付けなきゃいけない
+  let raw_name = idiv.children("h3").text();
+  let forbidden_chars = /[\\\/:\*\?\"<>\|]/;
+  let img_name = raw_name.replace(forbidden_chars, ' ');
+  return img_name;
 }
 
 async function clickImage(idiv) {
