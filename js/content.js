@@ -15,7 +15,7 @@ function collectImages() {
   let image_divs = $("[jsaction='TMn9y:cJhY7b;;cFWHmd:s370ud;']");
   //each使え every image next component (idiv)
   let idiv = image_divs.first();//debug
-  let raw_url = clickImage(idiv);
+  let img_url = clickImage(idiv);
   console.debug("get?");//debug
   //let img_url = abstractURL(raw_url);
   //let img_name = 
@@ -28,16 +28,18 @@ function clickImage(idiv) {
   t[0].click();
 
   let raw_url = null;
-  let startMsec = new Date();
-  //while (new Date()-startMsec < 1000);
   while (!raw_url) {
     raw_url = 
         $("[jsaction='TMn9y:cJhY7b;;cFWHmd:s370ud;'] > [role='button']")
         .attr("href");
   }
-  return raw_url;
+
+  let img_url = raw_url.substr(7, raw_url.indexOf('&'));
+
+  return img_url;
 }
 
 function abstractURL(raw_url) {
-  // 
+  // index7から&の前まで
+
 }
