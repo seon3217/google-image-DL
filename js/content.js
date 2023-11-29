@@ -21,6 +21,7 @@ async function collectImages() {
     filename: `test/${img_name}`,
     url: img_url
   };
+  startDL(dl_opt);
   //chrome.downloads.download(dl_opt).then(id=>{});
   //downloads apiはbackgroudでしか使えないらしい！
 
@@ -43,4 +44,10 @@ async function clickImage(idiv) {
       resolve(img_url);
     }, 100)
   })
+}
+
+function startDL(dl_opt) {
+  chrome.runtime.sendMessage(dl_opt, (response)=>{
+    console.debug(response);
+  });
 }
