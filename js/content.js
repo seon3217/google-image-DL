@@ -14,12 +14,20 @@ async function collectImages() {
 
   //each使え every image next component (idiv)
   let idiv = image_divs.first();//debug
+  let img_name = getImageName(idiv);
   let img_url = await clickImage(idiv);
-  console.debug(img_url);
   
-  //let img_name = 
-  //chrome.chrome.downloads.download(options, function (downloadId) {});
+  let dl_opt = {
+    filename: `test/${img_name}`,
+    url: img_url
+  };
+  //chrome.downloads.download(dl_opt).then(id=>{});
+  //downloads apiはbackgroudでしか使えないらしい！
 
+}
+
+function getImageName(idiv) {
+  return idiv.children("h3").text();
 }
 
 async function clickImage(idiv) {
@@ -35,12 +43,4 @@ async function clickImage(idiv) {
       resolve(img_url);
     }, 100)
   })
-
-  /*raw_url = 
-  $("[jsaction='TMn9y:cJhY7b;;cFWHmd:s370ud;'] > [role='button']")
-  .attr("href");*/
-
-  //let img_url = raw_url.substr(7, raw_url.indexOf('&'));
-
-  //return img_url;
 }

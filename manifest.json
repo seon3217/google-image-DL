@@ -2,7 +2,7 @@
 	"name": "グーグル画像DL",
 	"manifest_version": 3,
 	"version": "1.0",
-	"permissions": ["activeTab", "scripting"],
+	"permissions": ["activeTab", "scripting", "downloads"],
 	"action": {
 		"default_popup": "popup.html"
 	},
