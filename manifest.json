@@ -14,7 +14,8 @@
                 "https://www.google.com/search?*tbm=isch*"
             ],
             "all_frames": true,
-            "js": ["/js/content.js"]
+            "js": ["/js/content.js",
+                    "/js/jquery-3.7.1.min.js"]
         }
     ]
 }

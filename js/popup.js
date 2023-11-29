@@ -5,7 +5,7 @@ $('#run-btn').on('click', function (e) {
     // chrome.runtime.sendMessageでruntime宛てにメッセージを送信
     chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
       chrome.tabs.sendMessage(tabs[0].id, "Hello.", (response)=>{
-        alert(response);
+        console.debug(response);
         window.close();
       });
     });
