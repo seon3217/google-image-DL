@@ -9,7 +9,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse)=>{
   });
 
 async function collectImages() {
+
   console.debug("start collectImages()");
+
+  let search_q = editForPath($("input#REsRA").val(), '');
   let image_divs = $("[jsaction='TMn9y:cJhY7b;;cFWHmd:s370ud;']");
 
   //each使え every image next component (idiv)
@@ -18,7 +21,7 @@ async function collectImages() {
   let img_name = getImageName(idiv, img_url);
   
   let dl_opt = {
-    filename: `test/${img_name}.jpg`, //大体jpgやろという暫定的な処置
+    filename: `${search_q}/${img_name}.jpg`, //大体jpgやろという暫定的な処置
     url: img_url,
     conflictAction: "uniquify"
   };
@@ -26,11 +29,15 @@ async function collectImages() {
 
 }
 
+function editForPath(arg_str, alt_char) {
+  let forbidden_chars = /[\\\/:\*\?\"<>\|]/;
+  return arg_str.replace(forbidden_chars, alt_char);
+}
+
 function getImageName(idiv, img_url) {
   //拡張子を付けなきゃいけない
   let raw_name = idiv.children("h3").text();
-  let forbidden_chars = /[\\\/:\*\?\"<>\|]/;
-  let img_name = raw_name.replace(forbidden_chars, ' ');
+  let img_name = editForPath(raw_name, ' ');
   return img_name;
 }
 
