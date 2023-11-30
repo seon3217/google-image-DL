@@ -1,4 +1,27 @@
-<script src="/js/jquery-3.7.1.min.js"></script>
-<p>Press run to download.</p>
-<button id="run-btn">Run</button>
-<script src="/js/popup.js"></script>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Img DL</title>
+    <script src="/js/jquery-3.7.1.min.js"></script>
+    <script src="/js/popup.js"></script>
+    <style>
+        body {
+            width: 100px;
+            height: 100px;
+        }
+        #jump-setting {
+            color: rgb(0, 177, 247);
+        }
+        .underline:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <button id="run-btn">Run</button>
+    <div>
+        <p id="jump-setting" class="underline">保存場所を一々確認するか？(Brave限定)</p>
+    </div>
+</body>
+</html>
