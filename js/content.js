@@ -17,7 +17,7 @@ async function collectImages() {
   //downloaditemのstateがin_progressな物が3つあった場合待機（問題なさそうなので保留）
   //setIntervalで0.5秒ごとに進行中の数調べるアロー関数をawaitさせる？
   image_divs.each(async function (index) {
-    if (index>=5) return false;//debug
+    //if (index>=5) return false;//debug
     let img_url = await clickImage($(this));
     let img_name = getImageName($(this));
   

@@ -21,3 +21,13 @@ $("#jump-setting").click( ()=>{
     });
   });
 });
+
+$("#readme").click( ()=>{
+  console.debug("readme clicked");
+  chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+    chrome.tabs.create({
+      url: "readme.html",
+      index: tabs[0].index + 1
+    });
+  });
+});
