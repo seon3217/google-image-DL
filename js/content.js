@@ -61,13 +61,3 @@ function startDL(dl_opt) {
     console.debug(response);
   });
 }
-
-//todo
-chrome.runtime.onMessage.addListener((request, sender, sendResponse)=>{
-  if (request==="jump-setting") {
-    console.debug("received: request");
-    let setting = chrome.privacy.websites.hyperlinkAuditingEnabled.set({
-      value: false,
-    });
-  }
-});

@@ -13,11 +13,11 @@ $('#run-btn').on('click', function (e) {
 });
 
 $("#jump-setting").click( ()=>{
-  console.debug("link clicked");
+  console.debug("setting clicked");
   chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
-    chrome.tabs.sendMessage(tabs[0].id, "jump-setting", (response)=>{
-      console.debug(response);
-      window.close();
+    chrome.tabs.create({
+      url: "brave://settings/downloads",
+      index: tabs[0].index + 1
     });
   });
 });
